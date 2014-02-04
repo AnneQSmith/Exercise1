@@ -4,8 +4,11 @@ import random
 
 print "What is your name?",
 name = raw_input()
+keep_playing = True
 #print "Hello %s" % name
 #print type(name) #check type of our input
+
+#while (keep_playing)
 
 print "%s, i'm thinking of a number between 1 and 100. try to guess my number." % name
 
@@ -15,7 +18,9 @@ input_number = 1
 guesses = 0
 bad_guesses = 0
 
-while input_number != secret_number:
+#while keep_playing:
+
+while (input_number != secret_number) and keep_playing:
 
     user_input = raw_input()
     if user_input.isdigit():
@@ -27,12 +32,20 @@ while input_number != secret_number:
         elif input_number < secret_number:
             print ("Tee hee  -- that's too small!")
 
+    elif user_input == 'Q':
+        print ("Thanks for playing, %s!") % name
+        keep_playing = False
+        break
+       
     else:
         print ("You need to enter an integer")
         bad_guesses += 1
 
 
-print( "You got it, %s I was thinking of %d.  It took you %d good tries, and %d bad tries.") % (name, secret_number, guesses, bad_guesses)
-
+if user_input != 'Q':
+    print( "You got it, %s I was thinking of %d.  It took you %d good tries, and %d bad tries.")\
+ % (name, secret_number, guesses, bad_guesses)
+  
+    #print ("Type 'Q' unless you'd like to play again!")
 
 
