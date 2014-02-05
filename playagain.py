@@ -1,6 +1,7 @@
 #!/usr/bin/python
-
+# make sure the environment variable "DEBUGE1" exists before running this.
 import random
+import os
 
 print "What is your name?",
 name = raw_input()
@@ -11,8 +12,12 @@ while (keep_playing):
     print "%s, i'm thinking of a number between 1 and 100. try to guess my number." % name
 
     secret_number = random.randint(0,100)
-    print secret_number
-    input_number = 1
+    secret_number = 1
+    if os.environ['DEBUGE1'] == 'Y':
+        print secret_number
+    else:
+        pass
+    input_number = -1
     guesses = 0
     bad_guesses = 0
 
