@@ -9,14 +9,15 @@ name = raw_input()
 keep_playing = True
 while (keep_playing):
 
-    print "%s, i'm thinking of a number between 1 and 100. try to guess my number." % name
+    print "%s, I'm thinking of a number between 1 and 100. Try to guess my number:" % name
 
     secret_number = random.randint(0,100)
-    secret_number = 1
-    if os.environ['DEBUGE1'] == 'Y':
+
+    if os.environ.get('DEBUGE1') == 'Y':
         print secret_number
     else:
         pass
+    
     input_number = -1
     guesses = 0
     bad_guesses = 0
@@ -34,10 +35,10 @@ while (keep_playing):
                 print ("Tee hee  -- that's too small!")
            
         else:
-            print ("You need to enter an integer")
+            print ("You need to enter a single integer:")
             bad_guesses += 1
 
-    print( "You got it, %s I was thinking of %d.  It took you %d good tries, and %d bad tries.")\
+    print( "You got it, %s.  I was thinking of %d.  It took you %d valid tries, and %d junky tries.")\
      % (name, secret_number, guesses, bad_guesses)
     
     print ("Enter 'y' to keep playing!")
